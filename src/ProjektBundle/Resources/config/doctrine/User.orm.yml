@@ -1,0 +1,15 @@
+ProjektBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: ProjektBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToMany:
+        projekts:
+            targetEntity: Projekt
+            mappedBy: user
+    lifecycleCallbacks: {  }

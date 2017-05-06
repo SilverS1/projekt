@@ -1,0 +1,13 @@
+projekt_test:
+    path:     /test
+    defaults: { _controller: ProjektBundle:Default:test }
+
+
+projekt_index:
+    path:     /index
+    defaults: { _controller: ProjektBundle:Projekt:index }
+
+projekt_show:
+    path:     /{id}/show
+    defaults: { _controller: "ProjektBundle:Projekt:show" }
+    methods:  GET

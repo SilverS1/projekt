@@ -1,0 +1,34 @@
+ProjektBundle\Entity\Projekt:
+    type: entity
+    table: null
+    repositoryClass: ProjektBundle\Repository\ProjektRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+        image:
+            type: string
+            length: 255
+        progress:
+            type: integer
+    manyToOne:
+        user:
+          targetEntity: User
+          inversedBy: projekts
+          joinColumn:
+            name: user_id
+            referencedColumnName: id
+    oneToMany:
+        mains:
+            targetEntity: Main
+            mappedBy: projekt
+    lifecycleCallbacks: {  }

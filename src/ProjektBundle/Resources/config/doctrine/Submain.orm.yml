@@ -1,0 +1,36 @@
+ProjektBundle\Entity\Submain:
+    type: entity
+    table: null
+    repositoryClass: ProjektBundle\Repository\SubmainRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+        images:
+            type: text
+        dueDate:
+            type: datetime
+            column: due_date
+        createdDate:
+            type: datetime
+            column: created_date
+        startDate:
+            type: datetime
+            column: start_date
+        mainId:
+            type: integer
+            column: main_id
+            nullable: TRUE
+        submainId:
+            type: integer
+            column: submain_id
+            nullable: TRUE
+    lifecycleCallbacks: {  }

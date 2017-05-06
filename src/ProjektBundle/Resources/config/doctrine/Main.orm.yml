@@ -1,0 +1,36 @@
+ProjektBundle\Entity\Main:
+    type: entity
+    table: null
+    repositoryClass: ProjektBundle\Repository\MainRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+        image:
+            type: string
+            length: 255
+        dueDate:
+            type: datetime
+            column: due_date
+        createdDate:
+            type: datetime
+            column: created_date
+        startDate:
+            type: datetime
+            column: start_date
+    manyToOne:
+        projekt:
+          targetEntity: Projekt
+          inversedBy: mains
+          joinColumn:
+            name: projekt_id
+            referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	
+	<h1>{{ projekt.name }}</h1>
+
+	{% for main in mains %}
+
+		<h2>{{ main.name }}</h2>
+		{{ render(controller('ProjektBundle:Submain:index', {'mainId': main.id })) }}
+
+	{% endfor %}
+{% endblock %}
