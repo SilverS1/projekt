@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	
+
 	<h1>{{ projekt.name }}</h1>
 
 	{% for main in mains %}
@@ -10,4 +10,5 @@
 		{{ render(controller('ProjektBundle:Submain:index', {'mainId': main.id })) }}
 
 	{% endfor %}
+	
 {% endblock %}

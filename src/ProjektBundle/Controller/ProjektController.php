@@ -9,6 +9,7 @@ use ProjektBundle\Entity\Projekt;
 use Symfony\Component\HttpFoundation\Response;
 use ProjektBundle\Twig;
 use Gedmo\Tree\Entity\MappedSuperclass\AbstractClosure;
+use ProjektBundle\Form\ProjektType;
 
 class ProjektController extends Controller
 {
@@ -47,43 +48,46 @@ class ProjektController extends Controller
         $mainContainer = $this->container->get('app.main_controller');
         $submainContainer = $this->container->get('app.submain_controller');
         $mains = $mainContainer->findMains($projektId);
-        // foreach($mains as $m) {
-        //     $idtest = $m->getId();
-        //     echo "<pre>";
-        //     print_r($submainContainer->findSubmains($idtest));
-        //     echo "</pre>";
-        // }
-
-        // array_walk($mains, 'findSubmains');
 
          $em = $this->getDoctrine()->getManager();
 
-        // $submains = $em->getRepository('ProjektBundle:Submain')
-        //             ->findBy(array(
-        //                 'mainId' => 1));
-
-        // var_dump($submains);
-
-        // foreach($mains as $m) {
-        //     var_dump($m->getChildren());
-        //  }
-
-         
-//         $nodes = $mains[0]->getChildren();
-// $parent = $nodes[0]; //get Parent node 
-// $children = $parent->getChildren(); // get Children of Parent Nodes
-
-// $subChildren = array();
-
-// foreach ($children as $child)
-// {
-//     $subChildren = array_merge($subChildren, $child->getChildren()->toArray());
-// }
 
         return $this->render('ProjektBundle:Default:projekt/show.html.twig', array(
             'projekt' => $projekt,
             'mains' => $mains,
         ));
+    }
+
+    /**
+     * @Route("/new", name="projekt_new")
+     */
+    public function newAction(Request $request)
+    {
+        $projekt = new Projekt();
+        $form = $this->createForm(ProjektType::class, $projekt);
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $projekt->setUser($user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $projekt = $form->getData();
+
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($projekt);
+            $em->flush();
+
+            return $this->redirectToRoute('projekt_index');
+        }
+
+
+        return $this->render('ProjektBundle:Default:projekt/new.html.twig', array(
+            'form' => $form->createView(),
+        ));
+
     }
 
 }
