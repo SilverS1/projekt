@@ -38,23 +38,39 @@ class ProjektController extends Controller
 
     }
 
+    public function returnMains($projektId)
+    {
+        $mains = $this->forward('ProjektBundle:Main:findMains', array(
+            'projektId'  => $projektId,
+        ));
+
+        return $mains;
+    }
+
     /**
      * @Route("/{id}/show", name="projekt_show")
      */
     public function showAction(Projekt $projekt)
     {
+        //$em = $this->getDoctrine()->getManager();
         $projektId = $projekt->getId();
 
-        $mainContainer = $this->container->get('app.main_controller');
-        $submainContainer = $this->container->get('app.submain_controller');
-        $mains = $mainContainer->findMains($projektId);
+        // $mains = $this->returnMains($projektId);
 
-         $em = $this->getDoctrine()->getManager();
+        //$mainContainer = $this->container->get('app.main_controller');
+        
+        ///var_dump($mains);
 
+            //var_dump($mains);
+        // do I need this below?
+        //$submainContainer = $this->container->get('app.submain_controller');
+        //$mains = $mainContainer->findMains($projektId);
+
+         
 
         return $this->render('ProjektBundle:Default:projekt/show.html.twig', array(
             'projekt' => $projekt,
-            'mains' => $mains,
+            // 'mains' => $mains,
         ));
     }
 
@@ -74,8 +90,6 @@ class ProjektController extends Controller
 
             $projekt = $form->getData();
 
-            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
             $em = $this->getDoctrine()->getManager();
             $em->persist($projekt);
             $em->flush();

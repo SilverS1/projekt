@@ -8,10 +8,3 @@ services:
     app.submain_controller:
         class: ProjektBundle\Controller\SubmainController
         arguments: ["@doctrine.orm.entity_manager"]
-    # app.twig_extension:
-    #     class: ProjektBundle\Twig\ProjektExtension
-    #     public: false
-    #     arguments:
-    #             doctrine: "@doctrine" 
-    #     tags:
-    #         - { name: twig.extension }

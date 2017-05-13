@@ -14,3 +14,7 @@ projekt_show:
     path:     /{id}/show
     defaults: { _controller: "ProjektBundle:Projekt:show" }
     methods:  GET
+
+main_new:
+    path:     /{projektId}/main/new
+    defaults: { _controller: ProjektBundle:Main:new }

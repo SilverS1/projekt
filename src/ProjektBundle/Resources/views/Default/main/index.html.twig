@@ -1,5 +1,7 @@
 {% for main in mains %}
 
-	<h1>
+	<h3>{{ main.name }}</h3>
+
+	{{ render(controller('ProjektBundle:Submain:index', {'mainId': main.id })) }}
 
 {% endfor %}
