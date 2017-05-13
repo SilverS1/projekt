@@ -1,0 +1,11 @@
+.submain-title {
+
+}
+
+.submain-title:hover {
+	cursor: pointer;
+}
+
+.submain-description {
+	display: none;
+}

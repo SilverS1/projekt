@@ -1,8 +1,11 @@
 {% for main in mains %}
 
+	<div class="unknown">
+
 		<h3>{{ main.name }} <span><a href="{{ path('submain_new', { 'mainId': main.id }) }}">+</a></span></h3>
 
-	
-	{{ render(controller('ProjektBundle:Submain:index', {'mainId': main.id })) }}
+		{{ render(controller('ProjektBundle:Submain:index', {'mainId': main.id })) }}
+
+	</div>
 
 {% endfor %}
