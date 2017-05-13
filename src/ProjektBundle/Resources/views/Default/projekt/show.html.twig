@@ -2,21 +2,10 @@
 
 {% block body %}
 
-{# 	<button class="btn btn-success"> #}
 		<a href="{{ path('main_new', { 'projektId': projekt.id }) }}">Add Main</a>
-{# 	</button> #}
 
 	<h1>{{ projekt.name }}</h1>
-{# 
-	{% include 'template.html' with {'projektId': 'bar'} %} #}
-
 	{{ render(controller('ProjektBundle:Main:index', {'projektId': projekt.id })) }}
 
-{# 	{% for main in mains %}
-
-		<h2>{{ main.name }}</h2>
-		{{ render(controller('ProjektBundle:Submain:index', {'mainId': main.id })) }}
-
-	{% endfor %} #}
 	
 {% endblock %}

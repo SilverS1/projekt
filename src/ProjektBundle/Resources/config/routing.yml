@@ -18,3 +18,7 @@ projekt_show:
 main_new:
     path:     /{projektId}/main/new
     defaults: { _controller: ProjektBundle:Main:new }
+
+submain_new:
+    path:     /submain/new
+    defaults: { _controller: ProjektBundle:Submain:new }

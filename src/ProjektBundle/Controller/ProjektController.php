@@ -52,25 +52,10 @@ class ProjektController extends Controller
      */
     public function showAction(Projekt $projekt)
     {
-        //$em = $this->getDoctrine()->getManager();
         $projektId = $projekt->getId();
-
-        // $mains = $this->returnMains($projektId);
-
-        //$mainContainer = $this->container->get('app.main_controller');
-        
-        ///var_dump($mains);
-
-            //var_dump($mains);
-        // do I need this below?
-        //$submainContainer = $this->container->get('app.submain_controller');
-        //$mains = $mainContainer->findMains($projektId);
-
-         
 
         return $this->render('ProjektBundle:Default:projekt/show.html.twig', array(
             'projekt' => $projekt,
-            // 'mains' => $mains,
         ));
     }
 
@@ -96,7 +81,6 @@ class ProjektController extends Controller
 
             return $this->redirectToRoute('projekt_index');
         }
-
 
         return $this->render('ProjektBundle:Default:projekt/new.html.twig', array(
             'form' => $form->createView(),

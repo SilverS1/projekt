@@ -1,6 +1,6 @@
 {% for submain in submains %} 
 	<div style="margin-left: 40px" >
-		<h5>{{ submain.name }}</h5>
+		<h5>{{ submain.name }} <a href="{{ path('submain_new', { 'submainId': submain.id }) }}">+</a></h5>
 		<p>{{ submain.description }}</p>
 		{{ render(controller('ProjektBundle:Submain:index', {'submainId': submain.id })) }}
 	</div>

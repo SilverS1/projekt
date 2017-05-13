@@ -42,7 +42,8 @@ class MainController extends Controller
                         'projekt' => $projektId));
 
         return $this->render('ProjektBundle:Default:main/index.html.twig', 
-            ['mains' => $mains]);
+            ['mains' => $mains,
+            'projektId' => $projektId]);
     }
 
 
@@ -69,7 +70,7 @@ class MainController extends Controller
             $em->persist($main);
             $em->flush();
 
-            return $this->redirectToRoute('projekt_index');
+            return $this->redirectToRoute('projekt_show', ['id' => $projektId]);
         }
 
 
