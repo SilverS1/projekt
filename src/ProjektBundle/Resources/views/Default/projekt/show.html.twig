@@ -2,9 +2,13 @@
 
 {% block body %}
 
-		<a href="{{ path('main_new', { 'projektId': projekt.id }) }}">Add Main</a>
+		<a class="btn btn-primary" href="{{ path('main_new', { 'projektId': projekt.id }) }}">Add Main</a>
 
-	<h1>{{ projekt.name }}</h1>
+		<div class="projekt-show-wrapper">
+			<h1 class="projekt-name">{{ projekt.name }}</h1>
+			<p class="projekt-description">{{ projekt.description }}</p>
+		</div>
+
 	{{ render(controller('ProjektBundle:Main:index', {'projektId': projekt.id })) }}
 
 	

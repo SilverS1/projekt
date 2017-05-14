@@ -1,8 +1,14 @@
 {% for main in mains %}
 
-	<div class="unknown">
+	<div class="main-wrapper">
 
-		<h3>{{ main.name }} <span><a href="{{ path('submain_new', { 'mainId': main.id }) }}">+</a></span></h3>
+		<input type="checkbox" name="main-complete" class="main-checkbox" />
+
+		<h3 class="main-title">{{ main.name }}s</h3>
+
+		<a class="main-add-submain" href="{{ path('submain_new', { 'mainId': main.id }) }}">+</a>
+			
+		<p class="main-description">{{ main.description }}</p>
 
 		{{ render(controller('ProjektBundle:Submain:index', {'mainId': main.id })) }}
 

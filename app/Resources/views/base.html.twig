@@ -11,7 +11,11 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     {% block stylesheets %}
-        {% stylesheets 'assets/css/*' filter='cssrewrite' %}
+        {% stylesheets 
+            'assets/css/main.css' 
+            'assets/css/projekt.css' 
+            'assets/css/submains.css' 
+        %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
     {% endblock %}
@@ -64,7 +68,11 @@
     {% block javascripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-        {% javascripts 'assets/js/*' %}
+        {% javascripts 
+            'assets/js/main.js' 
+            'assets/js/submains.js' 
+            'assets/js/projekt.js' 
+        %}
             <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
     {% endblock %}

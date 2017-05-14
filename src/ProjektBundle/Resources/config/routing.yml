@@ -22,3 +22,7 @@ main_new:
 submain_new:
     path:     /submain/new
     defaults: { _controller: ProjektBundle:Submain:new }
+
+submain_delete:
+    path:     /submain/delete
+    defaults: { _controller: ProjektBundle:Submain:delete }

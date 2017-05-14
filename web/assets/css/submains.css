@@ -1,5 +1,15 @@
-.submain-title {
+.submain-wrapper {
+	margin-left: 20px;
+	margin-top: 10px;
+}
 
+.submain-title-wrapper {
+	display: inline;
+}
+
+.submain-title {
+	display: inline;
+	margin-left: 15px;
 }
 
 .submain-title:hover {
@@ -8,4 +18,35 @@
 
 .submain-description {
 	display: none;
+	margin-left: 15px;
+}
+
+.submain-checkbox{
+	display: inline;
+	margin-right: 5px !important;
+}
+
+.submain-actions {
+	display: inline;
+	font-size: 22px;
+}
+
+.submain-add {
+	margin-left: 3px;
+}
+
+.submain-add:hover {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.submain-delete {
+	color: red;
+	margin-left: 5px;
+}
+
+.submain-delete:hover {
+	text-decoration: none;
+	color: darkred;
+	cursor: pointer;
 }

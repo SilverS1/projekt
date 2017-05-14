@@ -4,9 +4,7 @@
 
 	{% for projekt in projekts %}
 
-		<h1>{{ projekt.progress }}</h1>
 		<h1><a href="{{ path('projekt_show', { 'id': projekt.id }) }}">{{ projekt.name }}</a></h1>
-		<h1>{{ projekt.id }}</h1>
 
 	{% endfor %}
 

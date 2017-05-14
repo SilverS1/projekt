@@ -1,29 +1,18 @@
 $(document).ready(function() {
-	// $('.submain-title').on('click', function() {
-	// 	if($(this).hasClass('open')) {
-	// 		$(this).next().slideUp();
-	// 	} else {
-	// 		$(this).addClass('open');
-	// 		$(this).next().slideDown();
-	// 	}
-	// });
 
-	$('.submain-title').on('click', function() {
+	$('.submain-title-wrapper h5').on('click', function() {
 
-		if($(this).hasClass("open")) {
-			$(this).next().slideUp('slow');
-			$(this).toggleClass("open");
-			// $(this).next().not("p:last-of-type").toggleClass("border-bottom")
-			// if($(this).next().is("p:last-of-type")) {
-			// 	$(this).css("border-bottom", "none");
-			// }
+		var submainWrapper = $('.submain-title-wrapper');
+
+		if($(submainWrapper).hasClass("open")) {
+
+			$(submainWrapper).next().slideUp('slow');
+			$(submainWrapper).toggleClass("open");
+
 		} else {
-			$(this).next().slideDown('slow');
-			$(this).toggleClass("open");
-			// $(this).next().not("p:last-of-type").toggleClass("border-bottom")
-			// if($(this).next().is("p:last-of-type")) {
-			// 	$(this).css("border-bottom", "1px solid black");
-			// }
+			
+			$(submainWrapper).next().slideDown('slow');
+			$(submainWrapper).toggleClass("open");
 		}
 
 	});
