@@ -70,7 +70,7 @@ class MainController extends Controller
             $em->persist($main);
             $em->flush();
 
-            return $this->redirectToRoute('projekt_show', ['id' => $projektId]);
+            return $this->redirect($this->container->get('router')->generate('projekt_show', array('id' => $projektId)));
         }
 
 
@@ -78,6 +78,34 @@ class MainController extends Controller
             'form' => $form->createView(),
         ));
 
+    }
+
+    /**
+     * @Route("main/delete", name="main_delete")
+     */
+    public function deleteAction(Request $request)
+    {   
+        $mainId =$request->query->get('mainId');
+        $em = $this->getDoctrine()->getEntityManager();
+        $main = $em->getRepository('ProjektBundle:Main')
+            ->findOneBy(array(
+            'id' => $mainId));
+
+        $submains = $em->getRepository('ProjektBundle:Submain')
+            ->findBy(array(
+            'mainId' => $mainId));
+
+
+        $em->remove($main);
+        if(!empty($submains)) {
+            foreach($submains as $submain) {
+                $em->remove($submain);
+            }
+        }
+        
+        $em->flush();   
+
+        return $this->redirect($request->headers->get('referer'));
     }
 
 }

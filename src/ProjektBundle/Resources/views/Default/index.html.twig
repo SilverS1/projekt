@@ -4,7 +4,7 @@
 
 	{% for projekt in projekts %}
 
-		<h1><a href="{{ path('projekt_show', { 'id': projekt.id }) }}">{{ projekt.name }}</a></h1>
+		<h1 class="projekt-title"><a href="{{ path('projekt_show', { 'id': projekt.id }) }}">{{ projekt.name }}</a></h1>
 
 	{% endfor %}
 

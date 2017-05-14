@@ -19,6 +19,10 @@ main_new:
     path:     /{projektId}/main/new
     defaults: { _controller: ProjektBundle:Main:new }
 
+main_delete:
+    path:     /main/delete
+    defaults: { _controller: ProjektBundle:Main:delete }
+
 submain_new:
     path:     /submain/new
     defaults: { _controller: ProjektBundle:Submain:new }

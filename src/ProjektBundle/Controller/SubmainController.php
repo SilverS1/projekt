@@ -40,12 +40,17 @@ class SubmainController extends Controller
      */
     public function newAction(Request $request, $mainId = 0, $submainId = 0)
     {
+        ///$url = $request->headers->get('referer');
         $em = $this->getDoctrine()->getManager();
         $submain = new Submain();
         $form = $this->createForm(SubmainType::class, $submain);
         $mainId = $request->query->get('mainId');
         $submainId =$request->query->get('submainId');
+        $projektId =$request->query->get('projektId');
         $submain->setCreatedDate(new \DateTime());
+        // var_dump($_SESSION);
+
+        
 
         if($mainId) {
             $main = $em->getRepository('ProjektBundle:Main')
@@ -71,7 +76,7 @@ class SubmainController extends Controller
             $em->persist($submain);
             $em->flush();
 
-            return $this->redirectToRoute('projekt_index');
+            return $this->redirect($this->container->get('router')->generate('projekt_show', array('id' => $projektId)));
         }
 
         return $this->render('ProjektBundle:Default:submain/new.html.twig', array(
@@ -92,9 +97,9 @@ class SubmainController extends Controller
             'id' => $submainId));;
 
        $em->remove($submain);
-       $em->flush();   
+       $em->flush(); 
 
-       return $this->redirectToRoute('projekt_index');
+       return $this->redirect($request->headers->get('referer'));
     }
 
 
