@@ -14,17 +14,21 @@ ProjektBundle\Entity\Submain:
             length: 255
         description:
             type: text
+            nullable: TRUE
         images:
             type: text
+            nullable: TRUE
         dueDate:
             type: datetime
             column: due_date
+            nullable: TRUE
         createdDate:
             type: datetime
             column: created_date
         startDate:
             type: datetime
             column: start_date
+            nullable: TRUE
         mainId:
             type: integer
             column: main_id

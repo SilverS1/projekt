@@ -7,7 +7,7 @@
 			<h5 class="submain-title">{{ submain.name }}</h5>
 
 			<div class="submain-actions"> 
-				<a class="submain-add" href="{{ path('submain_new', { 'submainId': submain.id }) }}">+</a>
+				<a class="submain-add" href="{{ path('submain_new', { 'projektId' : projektId, 'submainId': submain.id }) }}">+</a>
 				<a class="submain-delete" href="{{ path('submain_delete', { 'submainId': submain.id }) }}">-</a>
 			</div>
 
@@ -15,7 +15,7 @@
 
 		<p class="submain-description">{{ submain.description }}</p>
 
-		{{ render(controller('ProjektBundle:Submain:index', {'submainId': submain.id })) }}
+		{{ render(controller('ProjektBundle:Submain:index', {'projektId' : projektId, 'submainId': submain.id })) }}
 
 	</div>
 

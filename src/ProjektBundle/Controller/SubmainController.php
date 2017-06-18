@@ -13,7 +13,7 @@ use ProjektBundle\Form\SubmainType;
 class SubmainController extends Controller
 {
 
-    public function indexAction($mainId = 0, $submainId = 0) 
+    public function indexAction($projektId, $mainId = 0, $submainId = 0) 
     {
 
         $em = $this->getDoctrine()->getManager();
@@ -30,7 +30,8 @@ class SubmainController extends Controller
 
         return $this->render(
             'ProjektBundle:Default:submain/index.html.twig',
-            ['submains' => $submains]
+            ['submains' => $submains,
+            'projektId' => $projektId]
         );
 
     }
@@ -40,17 +41,13 @@ class SubmainController extends Controller
      */
     public function newAction(Request $request, $mainId = 0, $submainId = 0)
     {
-        ///$url = $request->headers->get('referer');
         $em = $this->getDoctrine()->getManager();
         $submain = new Submain();
-        $form = $this->createForm(SubmainType::class, $submain);
+        $form = $this->createForm(SubmainType::class, $submain, ['attr'=>array('novalidate'=>'novalidate')]);
         $mainId = $request->query->get('mainId');
         $submainId =$request->query->get('submainId');
         $projektId =$request->query->get('projektId');
         $submain->setCreatedDate(new \DateTime());
-        // var_dump($_SESSION);
-
-        
 
         if($mainId) {
             $main = $em->getRepository('ProjektBundle:Main')

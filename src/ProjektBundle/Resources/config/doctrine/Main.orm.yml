@@ -14,18 +14,22 @@ ProjektBundle\Entity\Main:
             length: 255
         description:
             type: text
+            nullable: TRUE
         image:
             type: string
             length: 255
+            nullable: TRUE
         dueDate:
             type: datetime
             column: due_date
+            nullable: TRUE
         createdDate:
             type: datetime
             column: created_date
         startDate:
             type: datetime
             column: start_date
+            nullable: TRUE
     manyToOne:
         projekt:
           targetEntity: Projekt

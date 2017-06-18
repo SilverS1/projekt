@@ -15,11 +15,14 @@ ProjektBundle\Entity\Projekt:
         description:
             type: string
             length: 255
+            nullable: TRUE
         image:
             type: string
             length: 255
+            nullable: TRUE
         progress:
             type: integer
+            nullable: TRUE
     manyToOne:
         user:
           targetEntity: User

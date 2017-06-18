@@ -54,7 +54,7 @@ class MainController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $main = new Main();
-        $form = $this->createForm(MainType::class, $main);
+        $form = $this->createForm(MainType::class, $main, ['attr'=>array('novalidate'=>'novalidate')]);
         $projekt = $em->getRepository('ProjektBundle:Projekt')
                     ->findOneBy(array(
                         'id' => $projektId));

@@ -23,9 +23,15 @@ class ProjektController extends Controller
 
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        // need an if statement for if a user is not logged in
+        $securityContext = $this->container->get('security.authorization_checker');
+
+        if($securityContext->isGranted('IS_AUTHENTICATED_FULLY') == false){
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+        }
 
         $userId = $user->getId();
+
 
         $projekts = $em->getRepository('ProjektBundle:Projekt')
                     ->findBy(array(

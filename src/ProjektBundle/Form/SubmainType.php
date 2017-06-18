@@ -23,7 +23,7 @@ class SubmainType extends AbstractType
             // add created_date in controller
             ->add('start_date', DateTimeType::class)
             // ->add('data_class', null)
-            ->add('save', SubmitType::class, array('label' => 'Create Main'))
+            ->add('save', SubmitType::class, array('label' => 'Create Submain'))
         ;
     }
 
