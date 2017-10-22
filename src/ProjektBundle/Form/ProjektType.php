@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ProjektType extends AbstractType
 {
@@ -17,9 +18,9 @@ class ProjektType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('description', TextareaType::class)
-            ->add('image')
-            ->add('progress', IntegerType::class)
+            ->add('description', TextareaType::class, array('required' => false))
+            ->add('image', FileType::class, array('required' => false))
+            ->add('progress', IntegerType::class, array('required' => false))
             ->add('save', SubmitType::class, array('label' => 'Create Projekt'))
         ;
     }

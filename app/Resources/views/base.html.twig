@@ -14,7 +14,8 @@
         {% stylesheets 
             'assets/css/main.css' 
             'assets/css/projekt.css' 
-            'assets/css/submains.css' 
+            'assets/css/submains.css'
+            'assets/css/base.css' 
         %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
@@ -24,6 +25,8 @@
   </head>
 
   <body>
+
+
 
     <nav class="navbar navbar-inverse">
       <div class="container">
@@ -39,7 +42,16 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
-            <li><a href="{{ path('projekt_index') }}">Projekts</a></li>
+            <li class="projekts-dropdown">
+                <a href="{{ path('projekt_index') }}">Projekts</a>
+                 <ul>
+                    {% if projekts is defined %}
+                    {% for projekt in projekts %}
+                        <li><a href="">{{ projekt.name }}</a></li>
+                    {% endfor %}
+                {% endif %}
+                </ul>
+            </li>
             <li><a href="{{ path('projekt_new') }}">Add Projekt</a></li>
           </ul>
         </div>

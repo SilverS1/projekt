@@ -4,6 +4,8 @@ $(document).ready(function() {
 
 		var mainWrapper = $(this).parent();
 
+		//console.log(mainWrapper)
+
 		if($(mainWrapper).hasClass("open")) {
 			$(mainWrapper).find('p').slideUp('slow');
 			$(mainWrapper).toggleClass("open");

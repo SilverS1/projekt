@@ -16,6 +16,9 @@ class MainType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        //$buttonName = $options['label'] > 0 ? 'save' : 'add';
+        // var_dump($options['label']);
+        // die();
         $builder
             ->add('name')
             ->add('description', TextareaType::class)
@@ -24,7 +27,7 @@ class MainType extends AbstractType
             // add created_date in controller
             ->add('start_date', DateTimeType::class)
             // ->add('data_class', null)
-            ->add('save', SubmitType::class, array('label' => 'Create Main'))
+            ->add('save', SubmitType::class, array('label' => ucfirst($options["label"]) . ' Main'))
         ;
     }
 

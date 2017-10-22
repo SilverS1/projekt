@@ -5,7 +5,8 @@
 		<h3 class="main-title">&bull;  {{ main.name }}s</h3>
 
 		<a class="main-add-submain" href="{{ path('submain_new', { 'projektId' : projektId, 'mainId': main.id }) }}">+</a>
-		<a class="submain-delete" href="{{ path('main_delete', { 'mainId': main.id }) }}">-</a>
+		<a class="main-edit glyphicon glyphicon-pencil href="{{ path('main_edit', { 'projektId' : projektId, 'mainId': main.id }) }}"></a>
+		<a class="main-delete" href="{{ path('main_delete', { 'mainId': main.id }) }}">-</a>
 			
 		<p class="main-description">{{ main.description }}</p>
 

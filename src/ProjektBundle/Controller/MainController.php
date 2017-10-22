@@ -54,7 +54,8 @@ class MainController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $main = new Main();
-        $form = $this->createForm(MainType::class, $main, ['attr'=>array('novalidate'=>'novalidate')]);
+        $form = $this->createForm(MainType::class, $main, 
+            ['attr'=>array('novalidate' =>  'novalidate'), 'label' => 'Create']);
         $projekt = $em->getRepository('ProjektBundle:Projekt')
                     ->findOneBy(array(
                         'id' => $projektId));
@@ -76,6 +77,7 @@ class MainController extends Controller
 
         return $this->render('ProjektBundle:Default:main/new.html.twig', array(
             'form' => $form->createView(),
+            'projekt' => $projekt,
         ));
 
     }
@@ -106,6 +108,48 @@ class MainController extends Controller
         $em->flush();   
 
         return $this->redirect($request->headers->get('referer'));
+    }
+
+       /**
+     * @Route("{projektId}/main/{mainId}/edit", name="main_edit")
+     */
+    public function editAction(Request $request, $projektId, $mainId)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $projekt = $em->getRepository('ProjektBundle:Projekt')
+                    ->findOneBy(array(
+                        'id' => $projektId));
+
+
+        $main = $em->getRepository('ProjektBundle:Main')
+                    ->findOneBy(array(
+                        'id' => $mainId));
+
+        $form = $this->createForm(MainType::class, $main, 
+            ['attr' => array('novalidate'=>'novalidate'),
+            'label' => 'edit']);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $main = $form->getData();
+            
+            $em->persist($main);
+            $em->flush();
+
+            return $this->redirect($this->container->get('router')
+                ->generate('projekt_show', array('id' => $projektId)));
+        }
+
+
+        return $this->render('ProjektBundle:Default:main/edit.html.twig', array(
+            'form' => $form->createView(),
+            'projekt' => $projekt,
+            'main' => $main,
+        ));
+
     }
 
 }

@@ -2,12 +2,14 @@
 
 {% block body %}
 
-<h1>New Main for <i>{{ projekt.name }}</i></h1>
+{# {{ dump() }} #}
+<h1>Edit <i>{{ main.name }}</i></h1>
 
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
 
 {{ form_start(form) }}
 {{ form_widget(form) }}
+{# {{ form_widget(form.save, { 'label': 'Click me' }) }} #}
 {{ form_end(form) }}
 
 {% endblock %}
